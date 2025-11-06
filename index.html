@@ -3,61 +3,66 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Meine Testwebsite</title>
+  <title>Dr KI – Medizinischer Praxisassistent</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       background-color: #f4f4f4;
       color: #333;
       text-align: center;
-      padding-top: 50px;
+      padding-top: 40px;
     }
     h1 { color: #0078ff; }
-    button {
-      background-color: #0078ff;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      padding: 10px 20px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-    button:hover { background-color: #005fcc; }
-
-    /* Stil fürs Chatfenster */
-    #chatContainer {
+    #chatbox {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      width: 400px;
-      height: 600px;
-      border: none;
+      width: 360px;
+      height: 500px;
+      background: white;
       border-radius: 12px;
-      display: none; /* unsichtbar bis Button gedrückt wird */
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
-      z-index: 9999;
+      box-shadow: 0 0 12px rgba(0,0,0,0.15);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    #messages {
+      flex: 1;
+      padding: 10px;
+      overflow-y: auto;
+      text-align: left;
+    }
+    #input-area {
+      display: flex;
+      border-top: 1px solid #ddd;
+    }
+    #user-input {
+      flex: 1;
+      border: none;
+      padding: 10px;
+      font-size: 14px;
+    }
+    #send-btn {
+      background: #0078ff;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
-  <h1>Willkommen auf meiner Testwebsite!</h1>
-  <p>Diese Seite ist dein erster Schritt zum eigenen Chatbot 🧠</p>
+  <h1>Willkommen bei Dr KI 👨‍⚕️</h1>
+  <p>Stell hier deine medizinischen Fragen – der Praxisassistent antwortet dir direkt.</p>
 
-  <!-- Button zum Öffnen des Chatbots -->
-  <button onclick="toggleChat()">Chatbot öffnen 💬</button>
+  <div id="chatbox">
+    <div id="messages"></div>
+    <div id="input-area">
+      <input id="user-input" placeholder="Schreib deine Frage..." />
+      <button id="send-btn">Senden</button>
+    </div>
+  </div>
 
-  <!-- Eingebettetes ChatGPT-Fenster -->
-  <iframe 
-    id="chatContainer"
-    src="https://chatgpt.com/g/g-68fb5be46e84819185c23670a924c51b-dr-ki-medizinischer-praxisassistent"
-    allow="clipboard-write; microphone; camera; autoplay">
-  </iframe>
-
-  <script>
-    function toggleChat() {
-      const chat = document.getElementById('chatContainer');
-      chat.style.display = (chat.style.display === 'none' || chat.style.display === '') ? 'block' : 'none';
-    }
-  </script>
+  <script src="chat.js"></script>
 </body>
 </html>
