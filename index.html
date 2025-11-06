@@ -23,11 +23,41 @@
       font-size: 16px;
     }
     button:hover { background-color: #005fcc; }
+
+    /* Stil fürs Chatfenster */
+    #chatContainer {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 400px;
+      height: 600px;
+      border: none;
+      border-radius: 12px;
+      display: none; /* unsichtbar bis Button gedrückt wird */
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      z-index: 9999;
+    }
   </style>
 </head>
 <body>
   <h1>Willkommen auf meiner Testwebsite!</h1>
-  <p>Diese Seite ist dein erster Schritt zum eigenen Chatbot 🚀</p>
-  <button onclick="alert('Hallo! Du hast den Button gedrückt.')">Klick mich!</button>
+  <p>Diese Seite ist dein erster Schritt zum eigenen Chatbot 🧠</p>
+
+  <!-- Button zum Öffnen des Chatbots -->
+  <button onclick="toggleChat()">Chatbot öffnen 💬</button>
+
+  <!-- Eingebettetes ChatGPT-Fenster -->
+  <iframe 
+    id="chatContainer"
+    src="https://chatgpt.com/g/g-68fb5be46e84819185c23670a924c51b-dr-ki-medizinischer-praxisassistent"
+    allow="clipboard-write; microphone; camera; autoplay">
+  </iframe>
+
+  <script>
+    function toggleChat() {
+      const chat = document.getElementById('chatContainer');
+      chat.style.display = (chat.style.display === 'none' || chat.style.display === '') ? 'block' : 'none';
+    }
+  </script>
 </body>
 </html>
